@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import CountryList from './components/CountryList'
+import TodoList from './components/TodoList'
 
-export type CountryType = {
+export type TodoType = {
   no: number
-  country: string
-  visited: boolean
+  todo: string
+  done: boolean
 }
 
 
 const App = () => {
   const [msg, setMsg] = useState<string>("World")
-  const [list, setList] = useState<Array<CountryType>>([
-    {no: 1, country: "이집트", visited: false},
-    {no: 2, country: "일본", visited: true},
-    {no: 3, country: "태국", visited: true}
+  const [list, setList] = useState<Array<TodoType>>([
+    {no: 1, todo: "리액트 공부", done: false},
+    {no: 2, todo: "영화 보기", done: true},
+    {no: 3, todo: "드라마 보기", done: true}
   ])
 
   const addResult = (x: string, y: string) => {
@@ -29,7 +29,7 @@ const App = () => {
       <h2>Hello {msg}</h2>
       <hr className="dash-style"/>
       {addResult("리액트를", "배워 봅시다")}
-      <CountryList countries={list}/>
+      <TodoList todos={list}/>
     </div>
   )
 }
