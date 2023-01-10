@@ -1,26 +1,15 @@
 import React from 'react'
+import { CountryType } from '../App'
+import CountryItem from './CountryItem'
 
-type CountryType = {
-  no: number
-  country: string
-  visited: boolean
+type CountryListPropsType = {
+  countries: Array<CountryType>
 }
 
-const CountryList = () => {
-  let list: Array<CountryType> = [
-    {no: 1, country: "이집트", visited: false},
-    {no: 2, country: "일본", visited: true},
-    {no: 3, country: "태국", visited: true}
-  ]
-
+const CountryList = (props: CountryListPropsType) => {
+  const list = props.countries
   let countries = list.map((item, index) => {
-    return (
-      <li key={item.no}
-      className={item.visited ? "list-group-item active" : "list-group-item"}
-      >
-        {item.country}
-      </li>
-    )
+    return <CountryItem key={item.no} countryitem={item} />
   })
   return (
     <ul className="list-group">{countries}</ul>
