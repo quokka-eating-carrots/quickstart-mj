@@ -1,4 +1,5 @@
 import React from 'react'
+import CountryList from './components/CountryList'
 
 type Props = {}
 
@@ -16,6 +17,7 @@ const App = (props: Props) => {
       <h2>Hello {msg}</h2>
       <hr className="dash-style"/>
       {addResult("리액트를", "배워 봅시다")}
+      <CountryList />
     </div>
   )
 }
