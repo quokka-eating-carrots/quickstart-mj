@@ -12,7 +12,7 @@ const Footer = (p1: FooterPropsType) => {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: ${p2 => (p2.theme === "basic" ? "skyblue" : "yellow")}
+  background-color: ${(p2) => (p2.theme === "basic" ? "skyblue" : "yellow")};
   text-align: center;
   `
 
