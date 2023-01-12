@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import TodoList from './components/TodoList'
+import styles from './styles'
+import AppCssModule from './App.module.css'
 
 export type TodoType = {
   no: number
@@ -11,9 +13,9 @@ export type TodoType = {
 const App = () => {
   const [msg, setMsg] = useState<string>("World")
   const [list, setList] = useState<Array<TodoType>>([
-    {no: 1, todo: "리액트 공부", done: false},
-    {no: 2, todo: "영화 보기", done: true},
-    {no: 3, todo: "드라마 보기", done: true}
+    { no: 1, todo: "리액트 공부", done: false },
+    { no: 2, todo: "영화 보기", done: true },
+    { no: 3, todo: "드라마 보기", done: true }
   ])
 
   const addResult = (x: string, y: string) => {
@@ -26,10 +28,10 @@ const App = () => {
 
   return (
     <div className="container">
-      <h2>Hello {msg}</h2>
-      <hr className="dash-style"/>
+      <h2 className={AppCssModule.test}>Hello {msg}</h2>
+      <hr style={styles.dashStyle} />
       {addResult("리액트를", "배워 봅시다")}
-      <TodoList todos={list}/>
+      <TodoList todos={list} />
     </div>
   )
 }
