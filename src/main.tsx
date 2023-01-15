@@ -5,14 +5,14 @@ import 'bootstrap/dist/css/bootstrap.css'
 import App from './4 react-component/Counter/App'
 import App2 from './4 react-component/Counter/App2'
 import App3 from './4 react-component/Counter/App3'
-// import './index.css'
 import produce from 'immer'
+import AppContainer from './4 react-component/TodoList/AppContainer'
+import 'bootstrap/dist/css/bootstrap.css'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <App />
-    <App2 />
-    <App3 />
+    <AppContainer />
   </React.StrictMode>,
 )
 
