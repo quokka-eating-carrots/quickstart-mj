@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoType } from '../App'
+import { TodoType } from '../../4 react-component/App'
 import styles from '../styles'
 
 type TodoItemPropsType = {

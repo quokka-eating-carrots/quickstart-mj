@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import TodoList from './components/TodoList'
-import styles from './styles'
+import TodoList from '../MinJeong/components/TodoList'
+import styles from '../MinJeong/styles'
 import AppCssModule from './App.module.css'
-import Footer from './components/Footer'
-import { BasicButton, ItalicButton, UnderLineButton, WhiteUnderLineButton } from './components/Buttons'
+import Footer from '../MinJeong/components/Footer'
+import { BasicButton, ItalicButton, UnderLineButton, WhiteUnderLineButton } from '../MinJeong/components/Buttons'
 
 export type TodoType = {
   no: number
