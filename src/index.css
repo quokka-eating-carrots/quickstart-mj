@@ -26,3 +26,9 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.boxStyle {
+  border: solid 1px gray;
+  padding: 5px;
+  margin: 5px;
+}
