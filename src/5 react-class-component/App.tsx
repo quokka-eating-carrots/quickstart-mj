@@ -10,7 +10,7 @@ class App extends Component<{}, {}> {
     return (
       <ErrorBoundary>
         <div>
-          참여 사용자: <UserList users={"mj"} />
+          참여 사용자: <UserList users={["mj"]} />
           <Chatting />
         </div>
       </ErrorBoundary>
