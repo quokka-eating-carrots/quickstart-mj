@@ -10,3 +10,4 @@
 - [6. 리액트 훅](./study/6.md)
 - [7. 고차 함수와 렌더링 최적화](./study/7.md)
 - [8. Context API](./study/8.md)
+- [9. 리액트 라우터](./study/9.md)
