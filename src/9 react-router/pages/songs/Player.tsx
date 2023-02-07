@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 import Youtube from "react-youtube";
 import { SongType } from "../../App";
 
-type Props = { songs: Array<SongType> };
 type SongIdParam = { id: string };
 type ContextType = { songs: Array<SongType> };
 
-const Player = (props: Props) => {
+const Player = () => {
   const { songs } = useOutletContext<ContextType>();
   const params = useParams<SongIdParam>();
   const navigate = useNavigate();
