@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,18 +11,38 @@ const Header = () => {
         </p>
         <div className="row">
           <div className="col-12">
-            <Link to="/" className="btn btn-success menu">
+            <NavLink
+              to="/"
+              className={({ isActive }) => {
+                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
+              }}
+            >
               Home
-            </Link>
-            <Link to="/about" className="btn btn-success menu">
+            </NavLink>
+            <NavLink
+              to="/about"
+              className={({ isActive }) => {
+                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
+              }}
+            >
               About
-            </Link>
-            <Link to="/members" className="btn btn-success menu">
+            </NavLink>
+            <NavLink
+              to="/members"
+              className={({ isActive }) => {
+                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
+              }}
+            >
               Members
-            </Link>
-            <Link to="/songs" className="btn btn-success menu">
+            </NavLink>
+            <NavLink
+              to="/songs"
+              className={({ isActive }) => {
+                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
+              }}
+            >
               Songs
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>
