@@ -6,8 +6,7 @@ const Loading = () => {
     <div className="w-100 h-75 position-fixed">
       <div className="row w-100 h-100 justify-content-center align-items-center">
         <div className="col-6 text-center">
-          <h3>Loading</h3>
-          <HashLoader height="40px" width="6px" radius="2px" margin="2px" />
+          <HashLoader />
         </div>
       </div>
     </div>
