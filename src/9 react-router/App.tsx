@@ -1,15 +1,24 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+
+import pMinDelay from "p-min-delay";
+import Loading from "./components/Loading";
 
 import Header from "./components/Header";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import SongList from "./pages/SongList";
-import Members from "./pages/Members";
-// import SongDetail from "./pages/SongDetail";
-// import SongDetail2 from "./pages/SongDetail2";
-import Player from "./pages/songs/Player";
-import SongIndex from "./pages/songs/Index";
+// import Home from "./pages/Home";
+// import About from "./pages/About";
+// import SongList from "./pages/SongList";
+// import Members from "./pages/Members";
+// // import SongDetail from "./pages/SongDetail";
+// // import SongDetail2 from "./pages/SongDetail2";
+// import Player from "./pages/songs/Player";
+// import SongIndex from "./pages/songs/Index";
+// import NotFound from "./pages/NotFound";
 
 export type MemberType = { name: string; photo: string };
 export type SongType = {
@@ -17,6 +26,18 @@ export type SongType = {
   title: string;
   youtube_link: string;
 };
+
+const Home = React.lazy(() => pMinDelay(import("./pages/Home"), 1000));
+const About = React.lazy(() => pMinDelay(import("./pages/About"), 1000));
+const SongList = React.lazy(() => pMinDelay(import("./pages/SongList"), 1000));
+const Members = React.lazy(() => pMinDelay(import("./pages/Members"), 1000));
+const Player = React.lazy(() =>
+  pMinDelay(import("./pages/songs/Player"), 1000)
+);
+const SongIndex = React.lazy(() =>
+  pMinDelay(import("./pages/songs/Index"), 1000)
+);
+const NotFound = React.lazy(() => pMinDelay(import("./pages/NotFound"), 1000));
 
 const App = () => {
   const [members] = useState<Array<MemberType>>([
@@ -106,20 +127,24 @@ const App = () => {
     { id: 16, title: "_WORLD", youtube_link: "VCDWg0ljbFQ" },
   ]);
   return (
-    <Router>
-      <div className="container">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About title={"아주 NICE"} />} />
-          <Route path="/members" element={<Members members={members} />} />
-          <Route path="/songs" element={<SongList songs={songs} />}>
-            <Route index element={<SongIndex />} />
-            <Route path=":id" element={<Player songs={songs} />} />
-          </Route>
-        </Routes>
-      </div>
-    </Router>
+    <React.Suspense fallback={<Loading />}>
+      <Router>
+        <div className="container">
+          <Header />
+          <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About title={"부석순"} />} />
+            <Route path="/members" element={<Members members={members} />} />
+            <Route path="/songs" element={<SongList songs={songs} />}>
+              <Route index element={<SongIndex />} />
+              <Route path=":id" element={<Player />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </Router>
+    </React.Suspense>
   );
 };
 
