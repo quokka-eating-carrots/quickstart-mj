@@ -25,13 +25,7 @@ const TodoList = ({ todoList, deleteTodo, toggleTodo }: PropsType) => {
   return (
     <div>
       <h2>TodoList 정보</h2>
-      <ul className="todos">
-        {todoList.map((todoItem) => (
-          <li key={todoItem.id}>
-            {todoItem.todo}, {todoItem.desc}
-          </li>
-        ))}
-      </ul>
+      <ul className="todos">{todoItems}</ul>
     </div>
   );
 };
