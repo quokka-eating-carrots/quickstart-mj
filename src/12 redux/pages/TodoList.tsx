@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import TodoItem from "./TodoItem";
 import TodoActionCreator from "../redux/TodoActionCreator";
 import { AnyAction, Dispatch } from "redux";
 import { connect } from "react-redux";
 import { TodoStatesType, TodoItemType } from "../redux/TodoReducer";
+import { RootStatesType } from "../redux/AppStore";
 
 type PropsType = {
   todoList: Array<TodoItemType>;
@@ -30,8 +30,8 @@ const TodoList = ({ todoList, deleteTodo, toggleTodo }: PropsType) => {
   );
 };
 
-const mapStateProps = (state: TodoStatesType) => ({
-  todoList: state.todoList,
+const mapStateProps = (state: RootStatesType) => ({
+  todoList: state.todos.todoList,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
