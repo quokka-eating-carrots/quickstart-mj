@@ -3,6 +3,7 @@ import TodoActionCreator from "../redux/TodoActionCreator";
 import { AnyAction, Dispatch } from "redux";
 import { connect } from "react-redux";
 import { TodoStatesType, TodoItemType } from "../redux/TodoReducer";
+import { useDispatch, useSelector } from "react-redux";
 import { RootStatesType } from "../redux/AppStore";
 
 type PropsType = {
@@ -30,13 +31,22 @@ const TodoList = ({ todoList, deleteTodo, toggleTodo }: PropsType) => {
   );
 };
 
-const mapStateProps = (state: RootStatesType) => ({
-  todoList: state.todos.todoList,
-});
+const TodoListContainer = () => {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
-  deleteTodo: (id: number) => dispatch(TodoActionCreator.deleteTodo({ id })),
-  toggleTodo: (id: number) => dispatch(TodoActionCreator.toggleTodo({ id })),
-});
+  const todoList = useSelector((state: RootStatesType) => state.todos.todoList);
+  const deleteTodo = (id: number) =>
+    dispatch(TodoActionCreator.deleteTodo({ id }));
+  const toggleTodo = (id: number) =>
+    dispatch(TodoActionCreator.toggleTodo({ id }));
 
-export default connect(mapStateProps, mapDispatchToProps)(TodoList);
+  return (
+    <TodoList
+      todoList={todoList}
+      deleteTodo={deleteTodo}
+      toggleTodo={toggleTodo}
+    />
+  );
+};
+
+export default TodoListContainer;

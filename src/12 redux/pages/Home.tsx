@@ -3,7 +3,6 @@ import TimeActionCreator from "../redux/TimeActionCreator";
 import { connect } from "react-redux";
 import { AnyAction, Dispatch } from "redux";
 import { RootStatesType } from "../redux/AppStore";
-import { ThunkDispatch } from "redux-thunk";
 
 type PropsType = {
   currentTime: Date;
@@ -30,8 +29,8 @@ const mapStateProps = (state: RootStatesType) => ({
   isChanging: state.home.isChanging,
 });
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
-  changeTime: () => dispatch(TimeActionCreator.asyncChangeTime()),
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
+  changeTime: () => dispatch(TimeActionCreator.changeTimeRequest()),
 });
 
 const HomeContainer = connect(mapStateProps, mapDispatchToProps)(Home);
